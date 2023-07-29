@@ -32,7 +32,7 @@ RUN airflow users create \
     --lastname User \
     --role Admin \
     --email default_user@example.com \
-    --password admin || echo "User 'default_user' already exists. Skipping user creation."
+    --password admin || echo "User 'admin' already exists. Skipping user creation."
 
 # Start the Airflow scheduler and web server
 CMD ["bash", "-c", "airflow scheduler & airflow webserver -p 8080"]
