@@ -55,3 +55,11 @@ docker-compose -f docker-compose.yml up
 - You can reach Airflow webserver at: http://localhost:8080. Login to the default account. (Username: admin, Password: admin)
 - You can reach mongodb instance at: http://localhost:8081.
 </details>
+
+## Additional Steps
+
+- You can check the compliance of the google python code style by
+
+```
+pylint setup.py
+```
