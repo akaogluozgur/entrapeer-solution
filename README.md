@@ -62,4 +62,6 @@ docker-compose -f docker-compose.yml up
 
 ```
 pylint setup.py
+pylint dags
+pylint src
 ```

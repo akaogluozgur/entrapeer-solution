@@ -1,2 +1,4 @@
 opendatasets
 pylint
+pandas
+pymongo

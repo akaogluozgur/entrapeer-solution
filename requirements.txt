@@ -18,6 +18,8 @@ click==8.1.6
     # via opendatasets
 dill==0.3.7
     # via pylint
+dnspython==2.4.1
+    # via pymongo
 idna==3.4
     # via requests
 isort==5.12.0
@@ -28,16 +30,26 @@ lazy-object-proxy==1.9.0
     # via astroid
 mccabe==0.7.0
     # via pylint
+numpy==1.25.1
+    # via pandas
 opendatasets==0.1.22
+    # via -r requirements.in
+pandas==2.0.3
     # via -r requirements.in
 platformdirs==3.10.0
     # via pylint
 pylint==2.17.5
     # via -r requirements.in
+pymongo==4.4.1
+    # via -r requirements.in
 python-dateutil==2.8.2
-    # via kaggle
+    # via
+    #   kaggle
+    #   pandas
 python-slugify==8.0.1
     # via kaggle
+pytz==2023.3
+    # via pandas
 requests==2.31.0
     # via kaggle
 six==1.16.0
@@ -57,6 +69,8 @@ tqdm==4.65.0
     #   opendatasets
 typing-extensions==4.7.1
     # via astroid
+tzdata==2023.3
+    # via pandas
 urllib3==2.0.4
     # via
     #   kaggle
