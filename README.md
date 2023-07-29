@@ -8,6 +8,21 @@ Make sure you have the following installed on your system:
 
 - [Install](https://www.python.org/downloads/) Python 3.10 or higher.
 - [Install](https://www.docker.com/products/docker-desktop/) Docker.
+- Manually [Install](https://www.kaggle.com/datasets/justinas/startup-investments) Startup Investment data from the link & extract the content of the **arhieve.zip** the folder named **data**.
+<details>
+  <summary>or Download the data via setup.py by providing your Kaggle api token.</summary>
+
+- Login to your Kaggle Account.
+- Locate your username and api key. Credentials can be obtained from [account settings](https://www.kaggle.com/settings)
+
+```
+pip install -r requirements.txt
+python3 setup.py
+```
+
+- Enter the credentials from terminal.
+
+</details>
 
 ---
 
