@@ -8,7 +8,7 @@ Make sure you have the following installed on your system:
 
 - [Install](https://www.python.org/downloads/) Python 3.10 or higher.
 - [Install](https://www.docker.com/products/docker-desktop/) Docker.
-- Manually [Install](https://www.kaggle.com/datasets/justinas/startup-investments) Startup Investment data from the link & extract the content of the **arhieve.zip** the folder named **data**.
+- Manually [install](https://www.kaggle.com/datasets/justinas/startup-investments) startup investment data from the link & extract the content of the **arhieve.zip** to the folder named **data/startup-investments**.
 <details>
   <summary>or Download the data via setup.py by providing your Kaggle api token.</summary>
 
@@ -17,7 +17,7 @@ Make sure you have the following installed on your system:
 
 ```
 pip install -r requirements.txt
-python3 setup.py
+python setup.py
 ```
 
 - Enter the credentials from terminal.
@@ -47,4 +47,19 @@ docker build . -t airflow
 
 ```
 docker-compose -f docker-compose.yml up
+```
+
+<details>
+  <summary>Step Notes</summary>
+
+- You can reach Airflow webserver at: http://localhost:8080. Login to the default account. (Username: admin, Password: admin)
+- You can reach mongodb instance at: http://localhost:8081.
+</details>
+
+## Additional Steps
+
+- You can check the compliance of the google python code style by
+
+```
+pylint setup.py
 ```

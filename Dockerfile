@@ -12,16 +12,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 
-# Install required packages
-RUN pip install apache-airflow
-RUN pip install -r requrements.txt
-
-# Initialize the Airflow database
-RUN airflow db init
-
 # Create the AIRFLOW_HOME directory
 RUN mkdir -p $AIRFLOW_HOME
 WORKDIR $AIRFLOW_HOME
+
+# Install required packages
+COPY requirements.txt requirements.txt
+
+RUN pip install apache-airflow
+RUN pip install -r requirements.txt
+
+# Initialize the Airflow database
+RUN airflow db init
 
 # Expose the Airflow web server port
 EXPOSE 8080
