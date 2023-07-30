@@ -31,7 +31,8 @@ EXPOSE 8080
 # Copy necessary files into the container
 COPY data data
 COPY dags $AIRFLOW_HOME/dags
-COPY src $AIRFLOW_HOME/src
+COPY src $AIRFLOW_HOME/dags/src
+COPY airflow.cfg $AIRFLOW_HOME/airflow.cfg
 
 # Create a default user
 RUN airflow users create \

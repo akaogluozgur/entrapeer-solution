@@ -15,9 +15,18 @@ class MongoDBStorage(Storage):
             password=MongoDBConfigs.PASSWORD,
         )
         
+        self.initialize_database()
+       
+        
+    def initialize_database(self):
         self.database = self.client[MongoDBConfigs.MONGO_DATABASE]
         self.collection = self.database[MongoDBConfigs.INVESTMENT_COLLECTION]
         
+        index_info = self.collection.index_information()
+        index_name = f'{MongoDBConfigs.SEARCH_QUERY_COLUMN}_text'
+        if index_name not in index_info:
+            self.collection.create_index([(MongoDBConfigs.SEARCH_QUERY_COLUMN, 'text')], name=index_name)
+    
     def save(self, input_data: List[Dict]) -> None:
         self.collection.insert_many(input_data)
 
