@@ -30,6 +30,8 @@ EXPOSE 8080
 
 # Copy necessary files into the container
 COPY data data
+COPY dags $AIRFLOW_HOME/dags
+COPY src $AIRFLOW_HOME/src
 
 # Create a default user
 RUN airflow users create \

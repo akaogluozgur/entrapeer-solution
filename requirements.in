@@ -1,2 +1,7 @@
 opendatasets
 pylint
+pandas
+pymongo
+loguru
+pytest
+pytest-cov
