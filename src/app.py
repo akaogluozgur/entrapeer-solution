@@ -7,6 +7,7 @@ from loguru import logger
 
 from src.models.csv_file_source import CsvFileSource
 from src.models.csv_file_extractor import CsvFileExtractor
+from src.models.df_transformer import DataFrameRowDictTransformer
 
 
 class App:
@@ -23,8 +24,12 @@ class App:
         """
         logger.info(f'Running for {file_paths}.')
         csv_file_sources = App.create_csv_file_sources(file_paths)
-        logger.info(f'Extracted from {csv_file_sources}.')
+
         extracted_data = CsvFileExtractor(csv_file_sources).extract()
+        logger.info(f'Extracted from {csv_file_sources}.')
+
+        transformed_data = DataFrameRowDictTransformer(input_df=extracted_data).transform()
+        logger.info('Transformed the extracted data.')
 
     @staticmethod
     def create_csv_file_sources(file_paths:List[str]) -> List[CsvFileSource]:

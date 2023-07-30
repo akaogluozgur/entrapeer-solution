@@ -1,7 +1,5 @@
 # entrapeer-solution
 
----
-
 ## Step 1: Install Prerequites
 
 Make sure you have the following installed on your system:
@@ -9,6 +7,11 @@ Make sure you have the following installed on your system:
 -   [Install](https://www.python.org/downloads/) Python 3.10 or higher.
 -   [Install](https://www.docker.com/products/docker-desktop/) Docker.
 -   Manually [install](https://www.kaggle.com/datasets/justinas/startup-investments) startup investment data from the link & extract the content of the **arhieve.zip** to the folder named **data/startup-investments**.
+
+```
+pip install -r requirements.txt
+```
+
 <details>
   <summary>or Download the data via setup.py by providing your Kaggle api token.</summary>
 

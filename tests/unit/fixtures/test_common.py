@@ -11,3 +11,11 @@ def csv_file_source_fixture(tmpdir):
     df = pd.DataFrame(data)
     df.to_csv(csv_file, index=False)
     return CsvFileSource(file_path=str(csv_file))
+
+
+@pytest.fixture
+def sample_data_fixture():
+    return {
+        'col1': [1, 2, 3],
+        'col2': ['A', 'B', 'C'],
+    }
