@@ -74,9 +74,12 @@ Should return 10 Document containin query if exists. **(Note: Search is not case
 
 ```
 python search_tool.py '<query>'
+or
+python3 search_tool.py '<query>'
 
 Ex:
 python search_tool.py 'ai'
+python3 search_tool.py 'ai'
 ```
 
 ## Additional Steps
