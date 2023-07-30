@@ -30,7 +30,7 @@ class App:
 
         storage = MongoDBStorage()
         loader = MongoDBLoader(mongo_storage=storage)
-        
+
         for index, extracted_data in enumerate(extracted_data_iterator):
             transformed_data = DataFrameRowDictTransformer(input_df=extracted_data).transform()
             logger.info(f'Transformed the extracted data part:{index}.')

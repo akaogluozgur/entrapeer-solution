@@ -2,9 +2,10 @@
 loader.py - Module for defining the Loader abstract class.
 '''
 from abc import ABC, abstractmethod
+from typing import Iterable
+
 from src.interfaces.storage import Storage
 
-from typing import Iterable
 
 class Loader(ABC):
     '''
@@ -47,6 +48,12 @@ class Loader(ABC):
 
         Raises:
             NotImplementedError: This method must be implemented by subclasses.
+        '''
+        raise NotImplementedError()
+
+    def __str__(self):  # pragma: no cover
+        '''
+        Default string representation for the Loader class.
         '''
         raise NotImplementedError()
         
