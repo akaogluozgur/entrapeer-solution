@@ -25,15 +25,16 @@ class App:
         logger.info(f'Running for {file_paths}.')
         csv_file_sources = App.create_csv_file_sources(file_paths)
 
-        extracted_data = CsvFileExtractor(csv_file_sources).extract()
+        extracted_data_iterator = CsvFileExtractor(csv_file_sources).extract()
         logger.info(f'Extracted from {csv_file_sources}.')
 
-        transformed_data = DataFrameRowDictTransformer(input_df=extracted_data).transform()
-        logger.info('Transformed the extracted data.')
+        for ix, extracted_data in enumerate(extracted_data_iterator):
+            transformed_data = DataFrameRowDictTransformer(input_df=extracted_data).transform()
+            logger.info(f'Transformed the extracted data part:{ix}.')
         
-        loader = MongoDBLoader()
-        loader.load(transformed_data)
-        logger.info('Loaded the transformed data.')
+            loader = MongoDBLoader()
+            loader.load(transformed_data)
+            logger.info(f'Loaded the transformed data part:{ix}')
 
     @staticmethod
     def create_csv_file_sources(file_paths:List[str]) -> List[CsvFileSource]:
