@@ -61,7 +61,11 @@ docker-compose -f docker-compose.yml up
 ## Step 4: Login to the airflow webserver and trigger the task named etl-startup-investments.
 
 You can reach Airflow webserver at: http://localhost:8080.
+
+<details>
+  <summary>Airflow Test Credentials</summary>
 Login to the default account. (Username: admin, Password: admin)
+</details>
 Under the Actions tab click Run button.
 
 ## Step 5: You can use CLI Tool with your query
