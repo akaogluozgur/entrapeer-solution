@@ -8,7 +8,7 @@ from loguru import logger
 from src.models.csv_file_source import CsvFileSource
 from src.models.csv_file_extractor import CsvFileExtractor
 from src.models.df_transformer import DataFrameRowDictTransformer
-from src.models.mongodb_loader import MongoDBLoader
+from src.models.mongodb_loader import MongoDBLoader, MongoDBStorage
 
 class App:
     '''
@@ -28,13 +28,15 @@ class App:
         extracted_data_iterator = CsvFileExtractor(csv_file_sources).extract()
         logger.info(f'Extracted from {csv_file_sources}.')
 
-        for ix, extracted_data in enumerate(extracted_data_iterator):
-            transformed_data = DataFrameRowDictTransformer(input_df=extracted_data).transform()
-            logger.info(f'Transformed the extracted data part:{ix}.')
+        storage = MongoDBStorage()
+        loader = MongoDBLoader(mongo_storage=storage)
         
-            loader = MongoDBLoader()
-            loader.load(transformed_data)
-            logger.info(f'Loaded the transformed data part:{ix}')
+        for index, extracted_data in enumerate(extracted_data_iterator):
+            transformed_data = DataFrameRowDictTransformer(input_df=extracted_data).transform()
+            logger.info(f'Transformed the extracted data part:{index}.')
+
+            loader.load(input_data=transformed_data)
+            logger.info(f'Loaded the transformed data part:{index}')
 
     @staticmethod
     def create_csv_file_sources(file_paths:List[str]) -> List[CsvFileSource]:

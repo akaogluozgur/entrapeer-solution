@@ -1,5 +1,7 @@
 import pytest
+from unittest.mock import MagicMock
 import pandas as pd
+from pymongo import MongoClient
 
 from src.models.csv_file_source import CsvFileSource
 
@@ -19,3 +21,10 @@ def sample_data_fixture():
         'col1': [1, 2, 3],
         'col2': ['A', 'B', 'C'],
     }
+    
+@pytest.fixture
+def mongo_client_fixture(monkeypatch):
+    mock_client = MagicMock(spec=MongoClient)
+    monkeypatch.setattr(MongoClient, "__new__", lambda cls, *args, **kwargs: mock_client)
+
+    return mock_client

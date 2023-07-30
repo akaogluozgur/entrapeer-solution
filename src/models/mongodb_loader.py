@@ -32,7 +32,7 @@ class MongoDBStorage(Storage):
 
 class MongoDBLoader(Loader):
 
-    def __init__(self, mongo_storage: MongoDBStorage = MongoDBStorage(), chunk_size: int = MongoDBConfigs.DEFAULT_CHUNK_SIZE):
+    def __init__(self, mongo_storage: MongoDBStorage, chunk_size: int = MongoDBConfigs.DEFAULT_CHUNK_SIZE):
         super().__init__(storage=mongo_storage)
         self.chunk_size = chunk_size
         

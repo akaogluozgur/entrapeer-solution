@@ -1,3 +1,6 @@
+'''
+loader.py - Module for defining the Loader abstract class.
+'''
 from abc import ABC, abstractmethod
 from src.interfaces.storage import Storage
 
@@ -12,14 +15,14 @@ class Loader(ABC):
     provide data loading functionality.
 
     Attributes:
-        storage (Storage): An instance of a class that implements the Storage interface, representing
-        the data storage from which data will be loaded.
+        storage (Storage): An instance of a class that implements the Storage interface, 
+        representing the data storage from which data will be loaded.
 
     Methods:
         load(input_data: Iterable) -> None:
             Abstract method to be implemented by subclasses for loading data.
     '''
-    def __init__(self, storage: Storage) -> None: # pragma: no cover 
+    def __init__(self, storage: Storage) -> None: # pragma: no cover
         '''
         Constructor for the Loader class.
 
@@ -29,10 +32,9 @@ class Loader(ABC):
         '''
         super().__init__()
         self.storage = storage
-        
-    
+
     @abstractmethod
-    def load(self, input_data: Iterable): # pragma: no cover 
+    def load(self, input_data: Iterable): # pragma: no cover
         '''
         Abstract method for loading data.
 
@@ -46,5 +48,5 @@ class Loader(ABC):
         Raises:
             NotImplementedError: This method must be implemented by subclasses.
         '''
-        pass
+        raise NotImplementedError()
         
