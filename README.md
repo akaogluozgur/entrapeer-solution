@@ -68,6 +68,7 @@ Navigate root directory of the repo via terminal.
 pylint setup.py
 pylint dags
 pylint src
+pylint tests
 ```
 
 -   You can see test coverage using

@@ -17,7 +17,7 @@ class Storage(ABC):
             Abstract method to be implemented by subclasses for loading data from storage.
     '''
     @abstractmethod
-    def save(input_data: Iterable) -> None: # pragma: no cover 
+    def save(self, input_data: Iterable) -> None: # pragma: no cover
         """
         Abstract method for loading data from storage.
 
@@ -33,3 +33,8 @@ class Storage(ABC):
         """
         raise NotImplementedError()
 
+    def __str__(self):  # pragma: no cover
+        '''
+        Default string representation for the Storage class.
+        '''
+        raise NotImplementedError()

@@ -9,3 +9,4 @@ class MongoDBConfigs:
     PASSWORD = os.environ.get('PASSWORD', 'example')
     MONGO_DATABASE = os.environ.get('MONGO_DATABASE', 'startup')
     INVESTMENT_COLLECTION = os.environ.get('MONGO_INVESTMENT_COLLECTION', 'investment')
+    SEARCH_QUERY_COLUMN = 'source_description'
