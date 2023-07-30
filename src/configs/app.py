@@ -1,0 +1,2 @@
+class AppConfigs:
+  pass
