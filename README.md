@@ -58,7 +58,26 @@ docker-compose -f docker-compose.yml up
 -   You can reach mongodb instance at: http://localhost:8081.
 </details>
 
+## Step 4: Login to the airflow webserver and trigger the task named etl-startup-investments.
+
+You can reach Airflow webserver at: http://localhost:8080.
+Login to the default account. (Username: admin, Password: admin)
+Under the Actions tab click Run button.
+
+## Step 5: You can use CLI Tool with your query
+
+Should return 10 Document containin query if exists. **(Note: Search is not case sensive)**
+
+```
+python search_tool.py '<query>'
+
+Ex:
+python search_tool.py 'ai'
+```
+
 ## Additional Steps
+
+-   You can check mongodb instance, db and collection at: http://localhost:8081.
 
 Navigate root directory of the repo via terminal.
 
