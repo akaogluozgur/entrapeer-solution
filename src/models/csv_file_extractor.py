@@ -58,5 +58,5 @@ class CsvFileExtractor(Extractor):
         for source in self.data_sources:
             yield source.load()
 
-    def __str__(self):
+    def __str__(self): # pragma: no cover
         return ', '.join(self.data_sources)

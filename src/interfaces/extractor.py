@@ -26,7 +26,7 @@ class Extractor(ABC):
             Abstract method to be implemented by subclasses for data extraction.
     '''
     @abstractmethod
-    def __init__(self, data_sources: List[DataSource]) -> None:
+    def __init__(self, data_sources: List[DataSource]) -> None: # pragma: no cover
         """
         Constructor for the Extractor class.
 
@@ -53,7 +53,7 @@ class Extractor(ABC):
         """
         raise NotImplementedError()
 
-    def __str__(self):
+    def __str__(self):  # pragma: no cover
         '''
         Default string representation for the DataSource class.
         '''

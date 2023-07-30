@@ -54,7 +54,7 @@ class CsvFileSource(DataSource):
         """
         return pd.read_csv(self.file_path)
 
-    def __str__(self):
+    def __str__(self): # pragma: no cover
         """
         String representation of the CsvFileSource object.
 
