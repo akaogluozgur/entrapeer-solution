@@ -1,6 +1,6 @@
-'''
+"""
 App class' module
-'''
+"""
 
 from typing import List
 from loguru import logger
@@ -10,12 +10,14 @@ from src.models.csv_file_extractor import CsvFileExtractor
 from src.models.df_transformer import DataFrameRowDictTransformer
 from src.models.mongodb_loader import MongoDBLoader, MongoDBStorage
 
+
 class App:
-    '''
+    """
     App class that contains solution steps.
-    '''
+    """
+
     @staticmethod
-    def run(file_paths:List[str]) -> None:
+    def run(file_paths: List[str]) -> None:
         """
         Executes the application logic using the provided list of file paths.
 
@@ -39,7 +41,7 @@ class App:
             logger.info(f'Loaded the transformed data part:{index}')
 
     @staticmethod
-    def create_csv_file_sources(file_paths:List[str]) -> List[CsvFileSource]:
+    def create_csv_file_sources(file_paths: List[str]) -> List[CsvFileSource]:
         """
         Creates a list of CsvFileSource objects based on the provided list of file paths.
 
