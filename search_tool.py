@@ -15,6 +15,7 @@ class Configs:
     PASSWORD = os.environ.get('PASSWORD', 'example')
     MONGO_DATABASE = 'startup'
     INVESTMENT_COLLECTION = 'investment'
+    DOCUMENT_LIMIT = 10
 
 
 class SearchTool:
@@ -33,7 +34,9 @@ class SearchTool:
     def keyword_search(self, query: str):
         query = {"$text": {"$search": query}}
         sort_order = [("score", {"$meta": "textScore"})]
-        cursor = self.collection.find(query).sort(sort_order).limit(10)
+        cursor = self.collection.find(
+            query
+            ).sort(sort_order).limit(Configs.DOCUMENT_LIMIT)
         results = list(cursor)
         return results
 
