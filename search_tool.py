@@ -11,7 +11,7 @@ class Configs:
     SEARCH_QUERY_COLUMN = 'source_description'
     HOST = os.environ.get('HOST', 'localhost')
     PORT = os.environ.get('PORT', 27017)
-    USERNAME = os.environ.get('USERNAME', 'root')
+    USERNAME = os.environ.get('USER', 'root')
     PASSWORD = os.environ.get('PASSWORD', 'example')
     MONGO_DATABASE = 'startup'
     INVESTMENT_COLLECTION = 'investment'
@@ -21,11 +21,15 @@ class Configs:
 class SearchTool:
     def __init__(self) -> None:
         self.client = MongoClient(
-            host='localhost',
+            host=Configs.HOST,
             port=Configs.PORT,
             username=Configs.USERNAME,
             password=Configs.PASSWORD,
         )
+        print(Configs.HOST,
+              Configs.PORT,
+              Configs.USERNAME,
+              Configs.PASSWORD)
 
     def connect_database(self):
         self.database = self.client[Configs.MONGO_DATABASE]
@@ -36,7 +40,7 @@ class SearchTool:
         sort_order = [("score", {"$meta": "textScore"})]
         cursor = self.collection.find(
             query
-            ).sort(sort_order).limit(Configs.DOCUMENT_LIMIT)
+        ).sort(sort_order).limit(Configs.DOCUMENT_LIMIT)
         results = list(cursor)
         return results
 
@@ -45,7 +49,8 @@ def main():
     parser = argparse.ArgumentParser(
         description="Search tool for source_description column in MongoDB."
     )
-    parser.add_argument("query", type=str, help="Keyword to search in source_description column.")
+    parser.add_argument("query", type=str,
+                        help="Keyword to search in source_description column.")
     args = parser.parse_args()
 
     search_tool = SearchTool()
