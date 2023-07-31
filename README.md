@@ -82,8 +82,8 @@ Login to the default account. (Username: admin, Password: admin)
 Under the Actions tab click Run button.
 
 ## Step 5: You can use CLI Tool with your query
-
-Should return 10 Document containin query if exists. **(Note: Search is not case sensive)**
+- Navigate root directory of the repo via terminal.
+- Should return 10 Document containing query if exists. **(Note: Search is not case sensive)**
 
 ```
 python search_tool.py '<query>'

@@ -1,16 +1,22 @@
+"""
+Python CLI tool for search functionality
+"""
+import os
 import argparse
 import json
 from pymongo import MongoClient
 
+
 class Configs:
     SEARCH_QUERY_COLUMN = 'source_description'
-    HOST = 'localhost'
-    PORT = 27017
-    USERNAME = 'root'
-    PASSWORD = 'example'
+    HOST = os.environ.get('HOST', 'localhost')
+    PORT = os.environ.get('PORT', 27017)
+    USERNAME = os.environ.get('USERNAME', 'root')
+    PASSWORD = os.environ.get('PASSWORD', 'example')
     MONGO_DATABASE = 'startup'
     INVESTMENT_COLLECTION = 'investment'
-    
+
+
 class SearchTool:
     def __init__(self) -> None:
         self.client = MongoClient(
@@ -19,11 +25,10 @@ class SearchTool:
             username=Configs.USERNAME,
             password=Configs.PASSWORD,
         )
-    
+
     def connect_database(self):
         self.database = self.client[Configs.MONGO_DATABASE]
         self.collection = self.database[Configs.INVESTMENT_COLLECTION]
-    
 
     def keyword_search(self, query: str):
         query = {"$text": {"$search": query}}
@@ -42,14 +47,15 @@ def main():
 
     search_tool = SearchTool()
     search_tool.connect_database()
-    
+
     results = search_tool.keyword_search(args.query)
-    
+
     if not results:
         print("No results found.")
     else:
         json_results = json.dumps(results, indent=4, default=str)
         print(json_results)
+
 
 if __name__ == "__main__":
     main()
