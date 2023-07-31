@@ -6,11 +6,12 @@ ENV AIRFLOW_HOME=/usr/local/airflow
 ENV AIRFLOW__CORE__LOAD_EXAMPLES=False
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libpq-dev \
-    python-dev-is-python3 \
-    && rm -rf /var/lib/apt/lists/*
-
+RUN apt-get update --yes && \
+    apt-get upgrade --yes && \
+    apt-get install --yes --no-install-recommends \
+    python3-dev \
+    gcc && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Create the AIRFLOW_HOME directory
 RUN mkdir -p $AIRFLOW_HOME

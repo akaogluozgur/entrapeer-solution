@@ -11,7 +11,7 @@ Make sure you have the following installed on your system:
 pip install -r requirements.txt
 ```
 
--   Manually [install](https://www.kaggle.com/datasets/justinas/startup-investments) startup investment data from the link & extract the content of the **arhieve.zip** to the folder named **data/startup-investments**.
+-   Manually [install](https://www.kaggle.com/datasets/justinas/startup-investments) startup investment data from the link & extract the content of the **arhieve.zip** to the folder named **data/startup-investments** in the root directory of the repository.
 <details>
   <summary>or Download the data via setup.py by providing your Kaggle api token.</summary>
 
@@ -25,6 +25,19 @@ python setup.py
 -   Enter the credentials from terminal.
 
 </details>
+
+Final folder structure should look like:
+
+```
+data
+│
+└── startup-investments
+    │
+    ├── csv_file1.csv
+    ├── csv_file2.csv
+    ├── csv_file3.csv
+    ├── ...
+```
 
 ---
 
