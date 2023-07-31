@@ -2,7 +2,7 @@ import os
 
 
 class MongoDBConfigs:
-    DEFAULT_CHUNK_SIZE: int = 100000 # records
+    DEFAULT_CHUNK_SIZE: int = 100000  # records
     HOST: str = os.environ.get('MONGO_HOST', 'mongo')
     PORT = os.environ.get('MONGO_PORT', 27017)
     USERNAME = os.environ.get('USERNAME', 'root')

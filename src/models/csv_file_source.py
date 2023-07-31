@@ -1,4 +1,4 @@
-'''
+"""
 csv_file_source.py - Module for defining the CsvFileSource class.
 
 This module contains the implementation of the CsvFileSource class, which is a specific
@@ -7,16 +7,15 @@ a CSV file.
 
 Classes:
     CsvFileSource: A class for loading data from a CSV file.
-'''
+"""
 
 import pandas as pd
 
 from src.interfaces.data_source import DataSource
 
 
-
 class CsvFileSource(DataSource):
-    '''
+    """
     CsvFileSource class for loading data from a CSV file.
 
     This class is a specific implementation of the DataSource abstract class,
@@ -34,7 +33,8 @@ class CsvFileSource(DataSource):
 
         __str__() -> str:
             Returns a string representation of the CsvFileSource object.
-    '''
+    """
+
     def __init__(self, file_path: str) -> None:
         """
         Constructor for the CsvFileSource class.
@@ -54,7 +54,7 @@ class CsvFileSource(DataSource):
         """
         return pd.read_csv(self.file_path)
 
-    def __str__(self): # pragma: no cover
+    def __str__(self):  # pragma: no cover
         """
         String representation of the CsvFileSource object.
 

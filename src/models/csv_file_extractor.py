@@ -1,4 +1,4 @@
-'''
+"""
 Module for defining the CsvFileExtractor class.
 
 This module contains the CsvFileExtractor class, which is a specific implementation of the Extractor
@@ -6,22 +6,23 @@ abstract class. It provides functionality to extract data from CSV file sources.
 
 Classes:
     CsvFileExtractor: A class for extracting data from CSV file sources.
-'''
+"""
 from typing import List, Iterable
 import pandas as pd
 
 from src.interfaces.extractor import Extractor
 from src.models.csv_file_source import CsvFileSource
 
+
 class CsvFileExtractor(Extractor):
-    '''
+    """
     CsvFileExtractor class for extracting data from CSV file sources.
 
     This class is a specific implementation of the Extractor abstract class,
     providing functionality to extract data from CSV file sources.
 
     Attributes:
-        csv_file_sources (List[CsvFileSource]): A list of CsvFileSource objects representing 
+        csv_file_sources (List[CsvFileSource]): A list of CsvFileSource objects representing
         the CSV file sources from which data will be extracted.
 
     Methods:
@@ -30,10 +31,10 @@ class CsvFileExtractor(Extractor):
 
         extract() -> Iterable[pd.DataFrame]:
             Method to extract data from CSV file sources.
-            
+
         __str__() -> str:
         Returns a string representation of the CsvFileExtractor object.
-    '''
+    """
 
     def __init__(self, csv_file_sources: List[CsvFileSource]) -> None:
         """
@@ -58,5 +59,5 @@ class CsvFileExtractor(Extractor):
         for source in self.data_sources:
             yield source.load()
 
-    def __str__(self): # pragma: no cover
-        return ', '.join(self.data_sources)
+    def __str__(self):  # pragma: no cover
+        return ', '.join([str(source) for source in self.data_sources])

@@ -3,8 +3,8 @@ from unittest.mock import MagicMock, call
 from src.models.mongodb_loader import MongoDBLoader, MongoDBStorage
 from src.configs.mongodb import MongoDBConfigs
 
-def test_load():
 
+def test_load():
     mock_storage = MagicMock(spec=MongoDBStorage)
 
     input_data = [
@@ -28,7 +28,7 @@ def test_load():
         ],
         any_order=False,
     )
-    
+
 
 def test_initialize_database(mongo_client_fixture):
     MongoDBStorage()
@@ -38,9 +38,9 @@ def test_initialize_database(mongo_client_fixture):
         [(MongoDBConfigs.SEARCH_QUERY_COLUMN, "text")],
         name=f"{MongoDBConfigs.SEARCH_QUERY_COLUMN}_text",
     )
-    
+
+
 def test_save(mongo_client_fixture):
-  
     storage = MongoDBStorage()
 
     input_data = [

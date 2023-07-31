@@ -1,13 +1,14 @@
-'''
+"""
 extractor.py - Module for defining the Extractor abstract class.
-'''
+"""
 from abc import ABC, abstractmethod
 from typing import List, Iterable
 
 from src.interfaces.data_source import DataSource
 
+
 class Extractor(ABC):
-    '''
+    """
     Abstract base class for data extractors.
 
     This class defines an abstract interface for extracting data from different data sources.
@@ -24,9 +25,10 @@ class Extractor(ABC):
 
         extract() -> Iterable:
             Abstract method to be implemented by subclasses for data extraction.
-    '''
+    """
+
     @abstractmethod
-    def __init__(self, data_sources: List[DataSource]) -> None: # pragma: no cover
+    def __init__(self, data_sources: List[DataSource]) -> None:  # pragma: no cover
         """
         Constructor for the Extractor class.
 
@@ -38,7 +40,7 @@ class Extractor(ABC):
         self.data_sources = data_sources
 
     @abstractmethod
-    def extract(self) -> Iterable: # pragma: no cover
+    def extract(self) -> Iterable:  # pragma: no cover
         """
         Abstract method to be implemented by subclasses for data extraction.
 

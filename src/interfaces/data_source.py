@@ -1,9 +1,10 @@
-'''
-Abstract base class for data sources with an abstract method 'load()' to be implemented by 
+"""
+Abstract base class for data sources with an abstract method 'load()' to be implemented by
 subclasses for loading data as a pandas DataFrame.
-'''
+"""
 from abc import ABC, abstractmethod
 import pandas as pd
+
 
 class DataSource(ABC):
     """Abstract base class for data sources.
@@ -15,8 +16,9 @@ class DataSource(ABC):
         Methods:
             load(): Abstract method to be implemented by subclasses for loading data.
     """
+
     @abstractmethod
-    def load(self) -> pd.DataFrame: # pragma: no cover
+    def load(self) -> pd.DataFrame:  # pragma: no cover
         """
         Abstract method to be implemented by subclasses for loading data.
 
@@ -28,5 +30,5 @@ class DataSource(ABC):
         """
         raise NotImplementedError()
 
-    def __str__(self): # pragma: no cover
+    def __str__(self):  # pragma: no cover
         raise NotImplementedError()

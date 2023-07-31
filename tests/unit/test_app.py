@@ -1,4 +1,4 @@
-'''
+"""
 Module for defining the App class tests.
 
 This module contains  tests for the App class using the pytest framework.
@@ -6,7 +6,7 @@ This module contains  tests for the App class using the pytest framework.
 Tests:
     test_run: Test for the 'run' method of the App class.
     test_create_csv_file_sources: Test for the 'create_csv_file_sources' method of the App class.
-'''
+"""
 
 from unittest.mock import MagicMock, call
 import pytest
@@ -17,10 +17,11 @@ from src.models.csv_file_extractor import CsvFileExtractor
 from src.models.df_transformer import DataFrameRowDictTransformer
 from src.models.mongodb_loader import MongoDBLoader, MongoDBStorage
 
+
 def test_run(monkeypatch):
-    '''
+    """
     Test for the 'run' method of the App class.
-    '''
+    """
     file_paths = ['/path/to/file1.csv', '/path/to/file2.csv']
 
     csv_file_sources = [
@@ -40,7 +41,6 @@ def test_run(monkeypatch):
     monkeypatch.setattr(CsvFileExtractor, 'extract', mock_extract)
 
     transformed_data = MagicMock()
-
 
     mock_transformer = MagicMock(return_value=transformed_data)
     monkeypatch.setattr(DataFrameRowDictTransformer, 'transform', mock_transformer)
@@ -65,24 +65,25 @@ def test_run(monkeypatch):
     expected_calls = [call(input_data=transformed_data) for _ in extracted_data_iterator]
     mock_loader.assert_has_calls(expected_calls)
 
+
 @pytest.mark.parametrize(
     "file_paths, expected_sources",
     [
         (['file1.csv'], [CsvFileSource(file_path='file1.csv')]),
         (
-            ['file1.csv', 'file2.csv', 'file3.csv'],
-            [
-                CsvFileSource(file_path='file1.csv'),
-                CsvFileSource(file_path='file2.csv'),
-                CsvFileSource(file_path='file3.csv')
-            ]
+                ['file1.csv', 'file2.csv', 'file3.csv'],
+                [
+                    CsvFileSource(file_path='file1.csv'),
+                    CsvFileSource(file_path='file2.csv'),
+                    CsvFileSource(file_path='file3.csv')
+                ]
         )
     ]
 )
 def test_create_csv_file_sources(file_paths, expected_sources):
-    '''
+    """
     Test for the 'create_csv_file_sources' method of the App class.
-    '''
+    """
     sources = App.create_csv_file_sources(file_paths)
     assert len(sources) == len(expected_sources)
     for i, expected_source in enumerate(expected_sources):

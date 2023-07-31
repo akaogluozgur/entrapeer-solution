@@ -1,8 +1,7 @@
 from datetime import timedelta
 
-class AirflowConfigs:
-    
 
+class AirflowConfigs:
     default_args = {
         'owner': 'airflow',
         'depends_on_past': False,

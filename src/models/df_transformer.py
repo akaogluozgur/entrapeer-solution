@@ -13,8 +13,9 @@ import pandas as pd
 
 from src.interfaces.transformer import Transformer
 
+
 class DataFrameRowDictTransformer(Transformer):
-    '''
+    """
     Class for transforming a DataFrame into a list of dictionaries.
 
     This class is a specific implementation of the Transformer abstract class, providing
@@ -27,7 +28,8 @@ class DataFrameRowDictTransformer(Transformer):
     Methods:
         transform() -> List[Dict]:
             Transform the input DataFrame into a list of dictionaries.
-    '''
+    """
+
     def __init__(self, input_df: pd.DataFrame) -> None:
         """
         Constructor for the DataFrameRowDictTransformer class.
@@ -48,7 +50,7 @@ class DataFrameRowDictTransformer(Transformer):
         output_dicts = self.input_data.to_dict(orient='records')
         return output_dicts
 
-    def __str__(self) -> str: # pragma: no cover
+    def __str__(self) -> str:  # pragma: no cover
         """
         String representation of the DataFrameRowDictTransformer object.
 

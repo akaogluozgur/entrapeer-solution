@@ -1,11 +1,12 @@
-'''
+"""
 storage.py - Module for defining the Storage abstract class.
-'''
+"""
 from abc import ABC, abstractmethod
 from typing import Iterable
 
+
 class Storage(ABC):
-    '''
+    """
     Abstract base class for data storage.
 
     This class defines an abstract interface for different types of data storage.
@@ -15,9 +16,10 @@ class Storage(ABC):
     Methods:
         save(input_data: Iterable) -> None:
             Abstract method to be implemented by subclasses for loading data from storage.
-    '''
+    """
+
     @abstractmethod
-    def save(self, input_data: Iterable) -> None: # pragma: no cover
+    def save(self, input_data: Iterable) -> None:  # pragma: no cover
         """
         Abstract method for loading data from storage.
 
@@ -34,7 +36,7 @@ class Storage(ABC):
         raise NotImplementedError()
 
     def __str__(self):  # pragma: no cover
-        '''
+        """
         Default string representation for the Storage class.
-        '''
+        """
         raise NotImplementedError()
